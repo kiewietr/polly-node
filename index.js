@@ -12,46 +12,46 @@ module.exports = function(apiToken) {
     
     Polly.publication = {
         
-        get (req,res) {
-            Polly.makeRequest(req,res,`/publication/${req.params._pubId}`)
+        get (params,callback) {
+            Polly.makeRequest(`/publication/${params.publicationId}`,callback)
         },
         
-        search (req,res) {
-            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/search/${req.params._searchQuery}`)
+        search (params,callback) {
+            Polly.makeRequest(`/publication/${params.publicationId}/search/${params.searchQuery}`, callback)
         },
         
-        mostpopular (req,res) {
-            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/mostpopular/${req.params._amount}`)
+        mostpopular (params,callback) {
+            Polly.makeRequest(`/publication/${params.publicationId}/mostpopular/${params.amount}`, callback)
         }
 
     },
     
     Polly.collection = {
         
-        get (req,res) {
-            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/collection/${req.params._collectionId}`)
+        get (params,callback) {
+            Polly.makeRequest(`/publication/${params.publicationId}/collection/${params.collectionId}`, callback)
         }
     },
     
     Polly.article = {
         
-        get (req,res) {
-            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/article/${req.params._articleId}`)
+        get (params,callback) {
+            Polly.makeRequest(`/publication/${params.publicationId}/article/${params.articleId}`, callback)
         }
     },
     
     Polly.decision_tree = {
         
-        get (req,res) {
-            Polly.makeRequest(req,res,`/decisiontree/${req.params._dtId}`)
+        get (params,callback) {
+            Polly.makeRequest(`/decisiontree/${params.dtId}`, callback)
         },
         
-        answer (req,res) {
-            Polly.makeRequest(req,res,`/decisiontree/${req.params._dtId}/answer/${req.params._questionId}/${req.params._answerId}`)
+        answer (params,callback) {
+            Polly.makeRequest(`/decisiontree/${params.dtId}/answer/${params.questionId}/${params.answerId}`, callback)
         }
     },
     
-    Polly.makeRequest = function (req,res,url) {
+    Polly.makeRequest = function (url,callback) {
         
         var options = {
             host: Polly.settings.host,
@@ -72,15 +72,9 @@ module.exports = function(apiToken) {
             });
             
             response.on('end', ()=> {
-                res.setHeader('Content-Type', 'application/json');
-                res.status(200)
-                res.send(data)
+                callback(data)
             })
 
-          }).on('error', (e) => {
-              res.status(500)
-              console.log(e)
-              res.end()
           })
     }
     
