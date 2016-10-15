@@ -1,0 +1,19 @@
+{
+  "name": "polly-node",
+  "version": "0.0.1",
+  "description": "Polly node library for using the Polly.help api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiewietr/polly-node.git"
+  },
+  "author": "Richard Kiewiet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiewietr/polly-node/issues"
+  },
+  "homepage": "https://github.com/kiewietr/polly-node#readme"
+}
