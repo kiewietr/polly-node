@@ -1,6 +1,6 @@
 {
   "name": "polly-node",
-  "version": "1.0.0",
+  "version": "0.5.0",
   "description": "Polly node library for using the Polly.help api",
   "main": "index.js",
   "scripts": {
