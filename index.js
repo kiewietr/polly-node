@@ -21,7 +21,7 @@ module.exports = function(apiToken) {
         },
         
         mostpopular (req,res) {
-            
+            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/mostpopular/${req.params._amount}`)
         }
 
     },
@@ -29,25 +29,25 @@ module.exports = function(apiToken) {
     Polly.collection = {
         
         get (req,res) {
-            
+            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/collection/${req.params._collectionId}`)
         }
     },
     
     Polly.article = {
         
         get (req,res) {
-            
+            Polly.makeRequest(req,res,`/publication/${req.params._pubId}/article/${req.params._articleId}`)
         }
     },
     
     Polly.decision_tree = {
         
         get (req,res) {
-            
+            Polly.makeRequest(req,res,`/decisiontree/${req.params._dtId}`)
         },
         
         answer (req,res) {
-            
+            Polly.makeRequest(req,res,`/decisiontree/${req.params._dtId}/answer/${req.params._questionId}/${req.params._answerId}`)
         }
     },
     
@@ -60,10 +60,8 @@ module.exports = function(apiToken) {
               'polly-api-token': Polly.settings['polly-api-token']
             }
           };
-        
+          
           var req = https.get(options, (response) => {
-            // console.log('statusCode:', response.statusCode);
-            // console.log('headers:', response.headers);
 
             response.setEncoding('utf8');
             
