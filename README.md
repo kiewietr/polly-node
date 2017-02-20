@@ -1,3 +1,5 @@
+DEPRECATED, DONT USE.
+
 # polly-node
 Node library for using Polly.help API. Currently used for Polly.help demo pages.
 
